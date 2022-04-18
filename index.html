@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>整合網站</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Web Icons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/favicon.ico" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/layui/layui.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/scss/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-xl d-flex align-items-center">
+      <div class="logo">
+        <a href="index.html"><i class="bi bi-file-medical"></i>  整合網站</a>
+      </div>
+
+      <div class="login-btn ms-auto">
+        <a href="#" class="scrollto">唐裕志</a>
+      </div>      
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" class="medical">
+    <section id="search-form" class="search-form">
+      <div class="container">
+        <div class="d-flex justify-content-start align-items-center">
+          <div class="search-bar d-flex">
+            <div class="search-label"><i class="bi bi-search"></i></div>
+            <div class="form-floating d-flex align-items-center">
+              <input type="text" class="form-control search-input" id="person-id" placeholder="民眾身分證號">
+              <label for="person-id">民眾身分證號</label>
+            </div>
+          </div>
+          <button id="id-search-btn" class="btn btn-primary" type="button">搜尋</button>
+        </div>
+        <div class="error-message hidden-message">
+          <p>查無結果，請重新搜尋</p>
+        </div>
+      </div>
+    </section>
+    <section id="initial-panel" class="initial-panel">
+      <img src="/assets/img/search-pic.png">
+      <span>搜尋民眾身份證號，進行數位醫療證明管理</span>
+    </section>
+    <!-- ======= Basic Personal Information Section ======= -->
+    <section id="personal-data" class="personal-data disable">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <small>Basic Personal Information</small>
+          <span>基本資料</span>
+        </div>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="d-flex"> 
+          <div class="data-column">
+            <span>中文姓名</span>
+            <p>唐裕志</p>
+          </div>
+
+          <div class="data-column">
+            <span>英文姓名</span>
+            <p>TANG TU-ZHI</p>
+          </div>
+        </div>
+        <div class="d-flex"> 
+          <div class="data-column">
+            <span>證件字號</span>
+            <p>A123456789</p>
+          </div>
+
+          <div class="data-column">
+            <span>出生日期</span>
+            <p>1990/01/15</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Personal Data Section -->
+    
+    <!-- ======= Digital Proof Account Section ======= -->
+    <section id="digit-account" class="digit-account disable">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <small>Digital Medical Account State</small>
+          <span>數位醫療證明申請帳號</span>
+        </div>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-md-12 reminder">
+            <p><i class="bi bi-info-circle"></i>民眾憑身份證號及最近 180 天中，其中一筆就醫紀錄的西元年月日登入</p>
+          </div>
+
+          <div class="col-md-12 account-state d-flex justify-content-start align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+              <i class="bi bi-check-circle state-icon"></i>
+              <span>登入</span>
+            </div>
+            <button type="button" id="unlock-btn" class="btn ms-auto">馬上解鎖</button>            
+          </div>
+        </div>
+      </div>      
+    </section><!-- End Digital Proof Account Section -->
+      
+    <!-- ======= Digit Medical Certificate Section ======= -->
+    <section id="medical-certificate" class="medical-certificate disable">
+      <div class="container d-flex" data-aos="fade-up">
+        <div class="section-title">
+          <small>Digit Medical Certificate</small>
+          <span>數位醫療證明</span>
+        </div>
+        <button type="button" id="download-btn" class="btn ms-auto">開始下載</button>
+      </div>
+      
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-0">
+          <div class="col-md-12 reminder">
+            <p><i class="bi bi-info-circle"></i>顯示最近 180 天的就醫紀錄，可開放「已下載」紀錄</p>            
+          </div>
+
+          <div class="col-md-12 d-flex">
+            <div class="tab-btns">
+              <button type="button" class="btn active" @click="changeKind('總覽')">總覽</button>
+              <button type="button" class="btn" @click="changeKind('診斷書')">診斷書</button>
+              <button type="button" class="btn" @click="changeKind('收據')">收據</button>
+            </div>
+            <div class="data-reminder ms-auto d-flex">
+              <p>選擇就診日期區間</p><span></span>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="filter-btns">
+              <button type="button" class="btn" @click="changeDownloadState('全部')">全部</button>
+              <button type="button" class="btn" @click="changeDownloadState('已下載')">已下載</button>
+              <button type="button" class="btn" @click="changeDownloadState('未下載')">未下載</button>              
+            </div>
+          </div>
+
+          <div class="col-md-12 record-table">
+            <table border="0">
+              <tr>
+                <th></th>
+                <th>就診日期<i class="bi bi-arrow-down"></i></th>
+                <th>下載紀錄</th>
+                <th>就診科別<i class="bi bi-arrow-down"></i></th>
+                <th>證明種類</th>
+                <th>下載期限</th>
+              </tr>
+              <tr v-for="record in filteredRecord">
+                <td align="center"><input type="checkbox" v-bind:disabled="record.status != '已下載'"></td>                
+                <td>${ record.date }</td>
+                <td>${ record.status }</td>
+                <td>${ record.department }</td>
+                <td>${ record.kind }</td>
+                <td>${ record.downloadLimit }</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>    
+    </section><!-- End Digit Medical Certificate Section -->
+       
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>CERTIFICATE</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/layui/layui.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
+  <script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/vue.js"></script>
+
+</body>
+
+</html>
