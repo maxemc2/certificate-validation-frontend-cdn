@@ -8,7 +8,12 @@ body {
 }
 
 main {
-  min-height: 1000px;
+  position: relative;
+  height: auto;
+}
+
+.medical {
+  min-height: 950px;
   margin-top: 50px;
 }
 
@@ -185,7 +190,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   top: 0px;
   z-index: 997;
-  background: #F3F5F6;
+  -webkit-box-shadow: 4px 8px 10px rgba(193, 200, 199, 0.1);
+          box-shadow: 4px 8px 10px rgba(193, 200, 199, 0.1);
+  background: #FFF;
   color: #000;
   font-weight: normal;
   font-stretch: normal;
@@ -204,12 +211,9 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo {
   display: inline-block;
   width: 180px;
-  background: #4986B0;
   font-size: 20px;
   margin: 0;
   padding: 12px 32px;
-  border-bottom-left-radius: 28px;
-  border-bottom-right-radius: 28px;
   line-height: 1.2;
   font-weight: 300;
   letter-spacing: 1px;
@@ -217,7 +221,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo a {
-  color: #fff;
+  color: #000;
 }
 
 #header .logo img {
@@ -227,7 +231,6 @@ h1, h2, h3, h4, h5, h6 {
 #header .login-btn {
   width: 85px;
   padding: 4px 8px;
-  border: 1px solid #35658D;
   border-radius: 4px;
   color: #6c6c6c;
   font-size: 16px;
@@ -238,8 +241,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
+#header .login-btn a .name {
+  color: #6C6C6C;
+}
+
+#header .login-btn a .other {
+  color: #00292B;
+}
+
 #header .login-btn:hover {
   background: #4986B0;
+}
+
+#header .login-btn:hover a {
   color: #fff;
 }
 
@@ -252,7 +266,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #header.header-scrolled {
   top: 0;
-  background: #F3F5F6;
 }
 
 /*--------------------------------------------------------------
@@ -555,6 +568,11 @@ section .section-title span {
   color: #6c6c6c;
 }
 
+section:not(:first-child):not(:last-child) div.container:last-child {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E8EDF1;
+}
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -624,7 +642,7 @@ section .section-title span {
 }
 
 .medical .reminder {
-  height: 24px;
+  min-height: 24px;
   margin-bottom: 24px;
   font-family: OpenSans;
   font-size: 16px;
@@ -632,6 +650,16 @@ section .section-title span {
   letter-spacing: 0.16px;
   text-align: left;
   color: #6c6c6c;
+}
+
+.medical .reminder.bottom-line {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E8EDF1;
+}
+
+.banner {
+  height: 100px;
+  background: #C4C4C4;
 }
 
 /*--------------------------------------------------------------
@@ -680,6 +708,7 @@ section .section-title span {
 #search-form button {
   height: 37px;
   margin-left: 16px;
+  background: #008e96;
 }
 
 #search-form .error-message {
@@ -843,14 +872,41 @@ section .section-title span {
   color: #008e96;
 }
 
+#digit-account .account-state.accept {
+  border: solid 1px #d7ead9;
+  background-color: #ebf4ec;
+}
+
+#digit-account .account-state.accept span {
+  color: #1D7228;
+}
+
+#digit-account .account-state.error {
+  border: solid 1px #FAE2C7;
+  background-color: #FDF0E3;
+}
+
+#digit-account .account-state.error span {
+  color: #CD7304;
+}
+
+#digit-account .account-state.danger {
+  border: solid 1px #FFCACC;
+  background-color: #FFEAEC;
+}
+
+#digit-account .account-state.danger span {
+  color: #9D1615;
+}
+
 /*--------------------------------------------------------------
 # Medical Certificate
 --------------------------------------------------------------*/
-#medical-certificate {
+.medical-certificate {
   font-family: OpenSans;
 }
 
-#medical-certificate #download-btn {
+.medical-certificate #download-btn {
   width: 91px;
   height: 37px;
   gap: 8px;
@@ -860,7 +916,7 @@ section .section-title span {
   color: #fff;
 }
 
-#medical-certificate .data-reminder {
+.medical-certificate .data-reminder {
   width: 181px;
   height: 33px;
   display: -webkit-box;
@@ -883,7 +939,7 @@ section .section-title span {
   background-color: #fff;
 }
 
-#medical-certificate .data-reminder p {
+.medical-certificate .data-reminder p {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.14px;
@@ -891,17 +947,19 @@ section .section-title span {
   color: #0a0a25;
 }
 
-#medical-certificate .data-reminder span {
+.medical-certificate .data-reminder span {
   width: 21px;
   height: 21px;
   margin-left: 8px;
-  background: #f5f6f6;
+  background: #C4C4C4;
+  border-radius: 2px;
 }
 
-#medical-certificate .tab-btns {
+.medical-certificate .tab-btns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 16px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -913,14 +971,14 @@ section .section-title span {
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
+  background: #F5F5F5;
+  color: #4F5E71;
 }
 
-#medical-certificate .tab-btns button {
+.medical-certificate .tab-btns button {
   width: 75px;
   height: 43px;
-  margin-bottom: 16px;
   border-radius: 0;
-  border-bottom: 1px solid #d1d5da;
   font-family: OpenSans;
   font-size: 16px;
   font-weight: 600;
@@ -932,16 +990,24 @@ section .section-title span {
   color: #4f5e71;
 }
 
-#medical-certificate .tab-btns button:not(:nth-child(1)) {
+.medical-certificate .tab-btns button:not(:nth-child(1)) {
   margin-left: -10px;
 }
 
-#medical-certificate .tab-btns button.active {
-  border-bottom-color: #5588ad;
-  color: #008e96;
+.medical-certificate .tab-btns button:first-child {
+  border-radius: 9px 0 0 9px;
 }
 
-#medical-certificate .filter-btns button {
+.medical-certificate .tab-btns button:last-child {
+  border-radius: 0 9px 9px 0;
+}
+
+.medical-certificate .tab-btns button.active {
+  background: #00A2AE;
+  color: #fff;
+}
+
+.medical-certificate .filter-btns button {
   width: 69px;
   height: 29px;
   gap: 8px;
@@ -959,17 +1025,17 @@ section .section-title span {
   background-color: #dae0e5;
 }
 
-#medical-certificate .record-table {
+.medical-certificate .record-table {
   padding: 20px 15px;
 }
 
-#medical-certificate .record-table table {
+.medical-certificate .record-table table {
   position: relative;
   width: 100%;
   font-size: 14px;
 }
 
-#medical-certificate .record-table table tr {
+.medical-certificate .record-table table tr {
   height: 40px;
   font-stretch: normal;
   font-style: normal;
@@ -978,20 +1044,20 @@ section .section-title span {
   text-align: left;
 }
 
-#medical-certificate .record-table table th {
+.medical-certificate .record-table table th {
   border-bottom: 1px solid #a8b8c2;
   font-weight: 600;
   color: #00292b;
 }
 
-#medical-certificate .record-table table td {
+.medical-certificate .record-table table td {
   width: 200px;
   border-bottom: 1px solid #e0e0e0;
   font-weight: normal;
   color: #00292b;
 }
 
-#medical-certificate .record-table table td input[type="checkbox"] {
+.medical-certificate .record-table table td input[type="checkbox"] {
   width: 20px;
   height: 20px;
   border-radius: 3px;
@@ -999,68 +1065,241 @@ section .section-title span {
   background: #fff;
 }
 
-#medical-certificate .record-table table td input[type="checkbox"] .disable {
+.medical-certificate .record-table table td input[type="checkbox"] .disable {
   background: #eff2f5;
 }
 
-#medical-certificate .record-table table td:first-child {
+.medical-certificate .record-table table td .download-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 69px;
+  height: 32px;
+  border: 1px solid #008E96;
+  border-radius: 4px;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  background: transparent;
+  color: #007A7F;
+}
+
+.medical-certificate .record-table table td .download-button span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 9px;
+  background: #C4C4C4;
+  border-radius: 2px;
+}
+
+.medical-certificate .record-table table td .download-button.disable {
+  border: 1px solid #79D8DC;
+  color: #79D8DC;
+}
+
+.medical-certificate .record-table.management table td:first-child {
   width: 71px;
   border-bottom: none;
   text-align: center;
 }
 
-#medical-certificate .record-table table td:nth-child(4) {
+.medical-certificate .record-table.management table td:nth-child(4) {
   width: 250px;
 }
 
-/*--------------------------------------------------------------
-# Food Kinds
---------------------------------------------------------------*/
-.kinds .carousel-button {
-  display: block;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  border: 0;
-  color: #fff;
-  background: #7F5539;
-  font-size: 18px;
-}
-
-.kinds .carousel-button:hover {
-  background: #f8863a;
-}
-
-.kinds .carousel-inner {
-  width: 90%;
-}
-
-.kinds .kind-card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0 5px;
-}
-
-.kinds .kind-card img {
-  height: 150px;
-  width: 150px;
-  margin: 0 5px;
-  border-radius: 50%;
-}
-
-.kinds .kind-card p {
-  width: 150px;
-  font-size: 20px;
-  color: #000;
+.medical-certificate .record-table.apply table td:last-child {
+  width: 100px;
+  border-bottom: none;
   text-align: center;
 }
 
-.kinds .kind-card p:hover {
-  color: #7F5539;
+.medical-certificate .record-table.apply table td:nth-child(2) {
+  width: 250px;
+}
+
+.medical-certificate .record-table.apply table td:nth-child(5) {
+  width: 298px;
+}
+
+/*--------------------------------------------------------------
+# Login Form
+--------------------------------------------------------------*/
+#login-form {
+  position: relative;
+  width: 50%;
+  padding: 0;
+}
+
+#login-form .form-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 960px;
+  background: #fff;
+}
+
+#login-form .form-columns .title {
+  height: 43px;
+  margin-bottom: 56px;
+  font-family: OpenSans;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: 0.36px;
+  text-align: left;
+  color: #00292b;
+}
+
+#login-form .form-columns .login-card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 412px;
+  margin-bottom: 32px;
+}
+
+#login-form .form-columns .login-card span {
+  display: block;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.14px;
+  text-align: left;
+  color: #00292b;
+}
+
+#login-form .form-columns .login-card span i {
+  margin: 0 5px;
+  color: #C4040B;
+}
+
+#login-form .form-columns .login-card input {
+  width: 100%;
+  height: 45px;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 3px;
+  border: solid 1px #c1ccd2;
+  background-color: #fff;
+}
+
+#login-form .form-columns .login-card button {
+  width: 100%;
+  height: 48px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #008e96;
+  color: #fff;
+}
+
+#login-form .form-columns .login-card .error-message {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #C4040B;
+}
+
+#login-form .form-columns .login-card .loginHelp {
+  height: 17px;
+  margin-top: 16px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  color: #008e96;
+}
+
+#login-form .form-columns .login-card.error input {
+  border-color: #C4040B;
 }
 
 /*--------------------------------------------------------------
@@ -1297,15 +1536,30 @@ section .section-title span {
 #footer {
   position: relative;
   width: 100%;
-  background: #000;
-  padding: 0 0 30px 0;
+  border-top: 1px #E0E0E0 solid;
   color: #1D3957;
   font-size: 14px;
 }
 
+#footer .connect-us {
+  margin: 39px 7px;
+}
+
+#footer .connect-us a {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: #007A7F;
+}
+
 #footer .copyright {
+  margin: 39px 7px;
   text-align: center;
-  padding-top: 30px;
-  color: #fff;
+  font-family: 'PingFang HK';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  color: #616161;
 }
 /*# sourceMappingURL=style.css.map */

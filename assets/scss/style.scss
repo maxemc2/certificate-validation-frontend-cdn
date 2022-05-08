@@ -9,8 +9,13 @@ body {
   color: #000;
 }
 
-main {
-	min-height: 1000px;
+main{
+	position: relative;
+	height: auto;
+}
+
+.medical {
+	min-height: 950px;
 	margin-top: 50px;
 }
 
@@ -167,7 +172,8 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 	top: 0px;
 	z-index: 997;
-	background: $background-color;
+	box-shadow: 4px 8px 10px rgba(193, 200, 199, 0.1);
+	background: #FFF;
 	color: #000;
 	font-weight: normal;
 	font-stretch: normal;
@@ -179,18 +185,15 @@ h1, h2, h3, h4, h5, h6 {
 	.logo {
 		display: inline-block;
 		width: 180px;
-		background: $light-text-color-2;
 		font-size: 20px;
 		margin: 0;
 		padding: 12px 32px;
-		border-bottom-left-radius: 28px;
-		border-bottom-right-radius: 28px;
 		line-height: 1.2;
 		font-weight: 300;
 		letter-spacing: 1px;
 		text-align: center;
 		a {
-			color: #fff;
+			color: #000;
 		}
 		img {
 			max-height: 40px;
@@ -202,7 +205,6 @@ h1, h2, h3, h4, h5, h6 {
 	.login-btn {
 		width: 85px;
 		padding: 4px 8px;
-		border: 1px solid $light-text-color;
 		border-radius: 4px;
 		color: $gray-dark;
 		font-size: 16px;
@@ -210,9 +212,19 @@ h1, h2, h3, h4, h5, h6 {
 		letter-spacing: 1px;
 		text-align: center;
 		transition: 0.3s;
+		a{
+			.name{
+				color: #6C6C6C;
+			}
+			.other{
+				color: #00292B;
+			}
+		}
 		&:hover {
 			background: $light-text-color-2;
-			color: #fff;
+			a{
+				color: #fff;
+			}			
 		}
 	}
 	@media (max-width: 992px) {
@@ -224,7 +236,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 #header.header-scrolled {
 	top: 0;
-	background: $background-color;
 }
 
 
@@ -473,7 +484,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 section {
 	padding: 20px 0;
-	overflow: hidden;
+	overflow: hidden;	
 	transition: 0.1s;
 	&.disable{
 		display: none !important;
@@ -504,8 +515,11 @@ section {
 			color: $gray-dark;
 		}
 	}
+	&:not(:first-child):not(:last-child) div.container:last-child{
+		padding-bottom: 20px;
+		border-bottom: 1px solid #E8EDF1;
+	}
 }
-
 
 /*--------------------------------------------------------------
 # Breadcrumbs
@@ -567,7 +581,7 @@ section {
 		margin: 5px 0;
 	}
 	.reminder{
-		height: 24px;
+		min-height: 24px;
 		margin-bottom: 24px;
 		font-family: OpenSans;
 		font-size: 16px;
@@ -575,9 +589,17 @@ section {
 		letter-spacing: 0.16px;
 		text-align: left;
 		color: $gray-dark;
+		&.bottom-line{
+			padding-bottom: 24px;
+			border-bottom: 1px solid #E8EDF1;
+		}
 	}
 }
 
+.banner{
+	height: 100px;
+	background: #C4C4C4;
+}
 /*--------------------------------------------------------------
 # Search Form
 --------------------------------------------------------------*/
@@ -614,6 +636,7 @@ section {
 	button{
 		height: 37px;
 		margin-left: 16px;
+		background: $primary-main;
 	}
 	.error-message{
 		width: 304px;
@@ -745,12 +768,33 @@ section {
 			border: solid 1px $primary-main;
 			color: $primary-main;
 		}
+		&.accept{
+			border: solid 1px #d7ead9;
+			background-color: #ebf4ec;
+			span{
+				color: #1D7228;
+			}
+		}
+		&.error{
+			border: solid 1px #FAE2C7;
+			background-color: #FDF0E3;
+			span{
+				color: #CD7304;
+			}
+		}
+		&.danger{
+			border: solid 1px #FFCACC;
+			background-color: #FFEAEC;
+			span{
+				color: #9D1615;
+			}
+		}
 	}
 }
 /*--------------------------------------------------------------
 # Medical Certificate
 --------------------------------------------------------------*/
-#medical-certificate {
+.medical-certificate {
 	font-family: OpenSans;
 	#download-btn{
 		width: 91px;
@@ -784,21 +828,23 @@ section {
 			width: 21px;
 			height: 21px;
 			margin-left: 8px;
-			background: #f5f6f6;
+			background: #C4C4C4;
+			border-radius: 2px;
 		}
 	}
 	.tab-btns{
 		display: flex;
+		margin-bottom: 16px;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
-		gap: 10px;
+		gap: 10px;		
+		background: #F5F5F5;
+		color: #4F5E71;
 		button{
 			width: 75px;
   			height: 43px;
-			margin-bottom: 16px;
 			border-radius: 0;
-			border-bottom: 1px solid #d1d5da;
 			font-family: OpenSans;
 			font-size: 16px;
 			font-weight: 600;
@@ -811,9 +857,15 @@ section {
 			&:not(:nth-child(1)){
 				margin-left: -10px;
 			}
+			&:first-child{
+				border-radius: 9px 0 0 9px;
+			}
+			&:last-child{
+				border-radius: 0 9px 9px 0;
+			}
 			&.active{
-				border-bottom-color: #5588ad;
-				color: $primary-main;
+				background: #00A2AE;
+				color: #fff;
 			}
 		}
 	}
@@ -870,6 +922,40 @@ section {
 						background: #eff2f5;
 					}
 				}
+				.download-button{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 69px;
+					height: 32px;
+					border: 1px solid #008E96;
+					border-radius: 4px;
+					font-family: 'Open Sans';
+					font-style: normal;
+					font-weight: 400;
+					font-size: 12px;
+					line-height: 150%;
+					text-align: center;
+					letter-spacing: 0.01em;
+					background: transparent;
+					color: #007A7F;
+					span{
+						display: inline-block;
+						width: 14px;
+						height: 14px;
+						margin-right: 9px;
+						background: #C4C4C4;
+						border-radius: 2px;
+					}
+					&.disable{
+						border: 1px solid #79D8DC;
+						color: #79D8DC;
+					}
+				}
+			}
+		}
+		&.management{
+			table td{
 				&:first-child{
 					width: 71px;
 					border-bottom: none;
@@ -878,53 +964,136 @@ section {
 				&:nth-child(4){
 					width: 250px;
 				}
-			}	
-		}		
+			}
+		}
+		&.apply{
+			table td{
+				&:last-child{
+					width: 100px;
+					border-bottom: none;
+					text-align: center;
+				}
+				&:nth-child(2){
+					width: 250px;
+				}
+				&:nth-child(5){
+					width: 298px;
+				}
+			}
+		}
 	}	
 }
 
 /*--------------------------------------------------------------
-# Food Kinds
+# Login Form
 --------------------------------------------------------------*/
-.kinds {
-	.carousel-button {
-		display: block;
-		width: 50px;
-		height: 50px;
-		border-radius: 100%;
-		border: 0;
-		color: #fff;
-		background: $coffee-color;
-		font-size: 18px;
-		&:hover {
-			background: #f8863a;
-		}
-	}
-	.carousel-inner{
-		width: 90%;
-	}
-	.kind-card{
+#login-form{
+	position: relative;
+	width: 50%;
+	padding: 0;
+	.form-columns{		
 		display: flex;
-  		justify-content: center;
-		padding: 0 5px;
-		img{
-			height: 150px;
-			width: 150px;
-			margin: 0 5px;
-			border-radius: 50%;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 960px;
+		background: #fff;
+		.title{
+			height: 43px;
+			margin-bottom: 56px;
+			font-family: OpenSans;
+			font-size: 36px;
+			font-weight: bold;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.2;
+			letter-spacing: 0.36px;
+			text-align: left;
+			color: $text-main;
 		}
-		p{
-			width: 150px;
-			font-size: 20px;
-			color: #000;
-			text-align: center;
-			&:hover {
-				color: $coffee-color;
+		.login-card{
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			width: 412px;
+			margin-bottom: 32px;
+			span{
+				display: block;
+				align-self: stretch;
+				flex-grow: 1;
+				font-family: OpenSans;
+				font-size: 14px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.5;
+				letter-spacing: 0.14px;
+				text-align: left;
+				color: $text-main;
+				i{
+					margin: 0 5px;
+					color: #C4040B;
+				}
+			}
+			input{
+				width: 100%;
+				height: 45px;
+				align-self: stretch;
+				flex-grow: 0;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 8px;
+				padding: 12px;
+				border-radius: 3px;
+				border: solid 1px #c1ccd2;
+				background-color: #fff;
+			}
+			button{
+				width: 100%;
+				height: 48px;
+				flex-grow: 0;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				padding: 12px 24px;
+				border: none;
+				border-radius: 4px;
+				background-color: $primary-main;
+				color: #fff;
+			}
+			.error-message{
+				font-family: 'Open Sans';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 150%;
+				letter-spacing: 0.01em;
+				color: #C4040B;
+			}
+			.loginHelp{
+				height: 17px;
+				margin-top: 16px;
+				flex-grow: 0;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				padding: 0;
+				color: $primary-main;
+			}
+			&.error {				
+				input{
+					border-color: #C4040B;
+				}
 			}
 		}
-	}
+		
+	}	
 }
-
 
 /*--------------------------------------------------------------
 # Search
@@ -1119,13 +1288,26 @@ section {
 #footer {
 	position: relative;
 	width: 100%;
-	background: #000;
-	padding: 0 0 30px 0;
+	border-top: 1px #E0E0E0 solid;
 	color: $dark-text-color;
 	font-size: 14px;
+	.connect-us{
+		margin: 39px 7px;
+		a{
+			font-family: 'Open Sans';
+			font-style: normal;
+			font-weight: 600;
+			line-height: 120%;
+			color: #007A7F;
+		}
+	}
 	.copyright {
+		margin: 39px 7px;
 		text-align: center;
-		padding-top: 30px;
-		color: #fff;
+		font-family: 'PingFang HK';
+		font-style: normal;
+		font-weight: 400;
+		line-height: 21px;
+		color: #616161;
 	}
 }

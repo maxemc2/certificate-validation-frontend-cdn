@@ -270,7 +270,17 @@
       ele.classList.add('disable');
     });
     }
-   });
+   }, true);
+  /**
+   * Tab Button
+   */
+   let buttons = select('#medical-certificate .tab-btns .btn', true);
+   on('click', '#medical-certificate .tab-btns .btn', function(e) {
+    buttons.forEach(function(ele){
+      ele.classList.remove('active');
+    });    
+    this.classList.add('active');
+   }, true);
   /**
    * Test
    */
@@ -281,4 +291,12 @@
     alert('開始下載!');
   },true)
 })()
-
+$(function(){
+  $('#birthday').datepicker({
+    format: 'yyyy/mm/dd',
+  });
+  $('#medical-date').datepicker({
+    format: 'yyyy/mm/dd',
+    startDate: '-181d'
+  });
+});

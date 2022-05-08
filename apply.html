@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>整合網站</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Web Icons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/favicon.ico" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/layui/layui.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/scss/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-xl d-flex align-items-center">
+      <div class="logo">
+        <a href="index.html"><i class="bi bi-file-medical"></i>  整合網站</a>
+      </div>
+
+      <div class="ms-auto d-flex align-items-center justify-content-center">
+        <div class="login-btn">
+          <a href="#" class="name">唐裕志</a>
+        </div>
+        <div class="login-btn">
+          <a href="#" class="other">EN</a>
+        </div>      
+        <div class="login-btn">
+          <a href="#" class="other">登出</a>
+        </div>   
+      </div>         
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" class="medical">      
+    <section id="banner" class="banner">
+    </section>
+    <!-- ======= Digit Medical Certificate Section ======= -->
+    <section id="medical-certificate-apply" class="medical-certificate">      
+      <div class="container d-flex" data-aos="fade-up">
+        <div class="section-title">
+          <small>Digit Medical Certificate</small>
+          <span>您的數位醫療證明 登出倒數測試{{ timeVal }}秒</span>
+        </div>
+      </div>
+      
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-0">
+          <div class="col-md-12 reminder bottom-line">
+            <p><i class="bi bi-dot"></i>顯示最近 180 天的就醫紀錄</p>
+            <p><i class="bi bi-dot"></i>如需申請數位證明，請至奇美醫院xxxx進行申請</p>
+          </div>
+
+          <div class="col-md-12 d-flex">
+            <div class="tab-btns">
+              <button type="button" class="btn" :class="{'active': kind=='總覽'}" @click="changeKind('總覽')">總覽</button>
+              <button type="button" class="btn" :class="{'active': kind=='診斷書'}" @click="changeKind('診斷書')">診斷書</button>
+              <button type="button" class="btn" :class="{'active': kind=='收據'}" @click="changeKind('收據')">收據</button>
+            </div>
+            <div class="data-reminder ms-auto d-flex">
+              <p>選擇就診日期區間</p><span></span>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="filter-btns">
+              <button type="button" class="btn" @click="changeDownloadState('全部')">全部</button>
+              <button type="button" class="btn" @click="changeDownloadState('可下載')">可下載</button>
+              <button type="button" class="btn" @click="changeDownloadState('已下載')">已下載</button>              
+            </div>
+          </div>
+
+          <div class="col-md-12 record-table apply">
+            <table border="0">
+              <tr>                
+                <th>就診日期<i class="bi bi-arrow-down"></i></th>                
+                <th>就診科別<i class="bi bi-arrow-down"></i></th>
+                <th>證明種類</th>
+                <th>下載紀錄</th>
+                <th>下載期限</th>
+                <th></th>
+              </tr>
+              <tr v-for="(record, index) in filteredRecord" :key="index">                           
+                <td>{{ record.date }}</td>
+                <td>{{ record.department }}</td>
+                <td>{{ record.kind }}</td>
+                <td>{{ record.status }}</td>                
+                <td>{{ record.downloadLimit }}</td>
+                <td>
+                  <button class="download-button" :class="{'disable': record.downloadLimit == '-'}" :disabled="record.downloadLimit == '-'" @click="download(record.date,record.kind,record.department)">
+                    <span></span>下載
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>    
+    </section><!-- End Digit Medical Certificate Section -->
+       
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container d-flex justify-content-end">
+      <div class="connect-us">
+        <a>聯絡我們</a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>CERTIFICATE</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/layui/layui.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
+  <script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/vue.js"></script>
+
+</body>
+
+</html>

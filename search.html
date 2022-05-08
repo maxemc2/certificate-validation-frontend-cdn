@@ -115,25 +115,25 @@
             <p><i class="bi bi-info-circle"></i>民眾憑身份證號及最近 180 天中，其中一筆就醫紀錄的西元年月日登入</p>
           </div>
 
-          <div class="col-md-12 account-state d-flex justify-content-start align-items-center">
+          <div class="col-md-12 account-state d-flex justify-content-start align-items-center" :class="state">
             <div class="d-flex justify-content-start align-items-center">
               <i class="bi bi-check-circle state-icon"></i>
-              <span>登入</span>
+              <span>{{ stateMessage }}</span>
             </div>
-            <button type="button" id="unlock-btn" class="btn ms-auto">馬上解鎖</button>            
+            <button type="button" id="unlock-btn" class="btn ms-auto" :hidden="state == 'accept'" @click="unlock()">馬上解鎖</button>            
           </div>
         </div>
       </div>      
     </section><!-- End Digital Proof Account Section -->
       
     <!-- ======= Digit Medical Certificate Section ======= -->
-    <section id="medical-certificate" class="medical-certificate disable">
+    <section id="medical-certificate-management" class="medical-certificate disable">
       <div class="container d-flex" data-aos="fade-up">
         <div class="section-title">
           <small>Digit Medical Certificate</small>
           <span>數位醫療證明</span>
         </div>
-        <button type="button" id="download-btn" class="btn ms-auto">開始下載</button>
+        <button type="button" id="download-btn" class="btn ms-auto" :disabled="checkNum == 0" @click="downloadAll()">開放下載</button>
       </div>
       
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -144,9 +144,9 @@
 
           <div class="col-md-12 d-flex">
             <div class="tab-btns">
-              <button type="button" class="btn active" @click="changeKind('總覽')">總覽</button>
-              <button type="button" class="btn" @click="changeKind('診斷書')">診斷書</button>
-              <button type="button" class="btn" @click="changeKind('收據')">收據</button>
+              <button type="button" class="btn" :class="{'active': kind=='總覽'}" @click="changeKind('總覽')">總覽</button>
+              <button type="button" class="btn" :class="{'active': kind=='診斷書'}" @click="changeKind('診斷書')">診斷書</button>
+              <button type="button" class="btn" :class="{'active': kind=='收據'}" @click="changeKind('收據')">收據</button>
             </div>
             <div class="data-reminder ms-auto d-flex">
               <p>選擇就診日期區間</p><span></span>
@@ -157,11 +157,11 @@
             <div class="filter-btns">
               <button type="button" class="btn" @click="changeDownloadState('全部')">全部</button>
               <button type="button" class="btn" @click="changeDownloadState('已下載')">已下載</button>
-              <button type="button" class="btn" @click="changeDownloadState('未下載')">未下載</button>              
+              <button type="button" class="btn" @click="changeDownloadState('可下載')">可下載</button>              
             </div>
           </div>
 
-          <div class="col-md-12 record-table">
+          <div class="col-md-12 record-table management">
             <table border="0">
               <tr>
                 <th></th>
@@ -171,13 +171,15 @@
                 <th>證明種類</th>
                 <th>下載期限</th>
               </tr>
-              <tr v-for="record in filteredRecord">
-                <td align="center"><input type="checkbox" v-bind:disabled="record.status != '已下載'"></td>                
-                <td>${ record.date }</td>
-                <td>${ record.status }</td>
-                <td>${ record.department }</td>
-                <td>${ record.kind }</td>
-                <td>${ record.downloadLimit }</td>
+              <tr v-for="record in filteredRecord" :key="record.date+record.department" ref="record.date+record.department">
+                <td>
+                  <input type="checkbox" v-model="recordCheck" :value="record.date+record.department" v-bind:disabled="record.status != '已下載'">
+                </td>                
+                <td>{{ record.date }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.department }}</td>
+                <td>{{ record.kind }}</td>
+                <td>{{ record.downloadLimit }}</td>
               </tr>
             </table>
           </div>
@@ -189,7 +191,10 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container">
+    <div class="container d-flex justify-content-end">
+      <div class="connect-us">
+        <a>聯絡我們</a>
+      </div>
       <div class="copyright">
         &copy; Copyright <strong><span>CERTIFICATE</span></strong>. All Rights Reserved
       </div>
